@@ -9,17 +9,12 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-import org.springframework.jdbc.core.namedparam.SqlParameterSource;
-import org.springframework.jdbc.core.namedparam.SqlParameterSourceUtils;
-import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Component;
 
 import dummy.entity.Book;
 
 @Component
 public abstract class MyBookDao {
-	
 	
 	
 	public MyBookDao() {
@@ -30,23 +25,11 @@ public abstract class MyBookDao {
 	private JdbcTemplate jdbcTemplate;
 	
 	@Autowired
-	private NamedParameterJdbcTemplate namedtemplate;
-	
-	private SimpleJdbcInsert simpleJdbcInsert;
-	
-	@Autowired
     public void setDataSource(final DataSource dataSource) {
-        jdbcTemplate.setDataSource(dataSource);
-
-        simpleJdbcInsert = new SimpleJdbcInsert(dataSource).withTableName("BOOK");
-        
+        jdbcTemplate.setDataSource(dataSource);        
     }
 
-	public int updatebook(String author, String title, int isbn) { 
-		return jdbcTemplate.update("UPDATE BOOK SET  AUTHOR = ?, TITLE = ? WHERE ISBN =?",author,title,isbn);
-	}
-
-    public int[] batchInsert(final List<Book> books) {
+	public int[] batchInsert(final List<Book> books) {
         return jdbcTemplate.batchUpdate("INSERT INTO BOOK VALUES (?, ?, ?, ?)", new BatchPreparedStatementSetter() {
 
             @Override
