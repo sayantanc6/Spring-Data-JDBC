@@ -40,17 +40,15 @@ public class MyController {
 			produces = MediaType.APPLICATION_JSON_VALUE,
 			consumes = MediaType.APPLICATION_JSON_VALUE,
 			headers = "Accept=application/json")
-	public  int addCustomer(@RequestBody Book book) {
-		System.out.println(book);
-		 
-		return dao.addBook(book);
+	public  Book addBook(@RequestBody Book book) {		 
+		return repo.save(book);
 	}	
 	
 	@PutMapping(value = "/updatebook",
 			produces = MediaType.APPLICATION_JSON_VALUE,
 			consumes = MediaType.APPLICATION_JSON_VALUE,
 			headers = "Accept=application/json")
-	public  int updatecust(@RequestParam("title")String title,@RequestParam("author")String author, @RequestParam("isbn") int isbn) {
+	public  int updatebook(@RequestParam("title")String title,@RequestParam("author")String author, @RequestParam("isbn") int isbn) {
 		System.out.println("title:"+title);
 		System.out.println("author:"+author);
 		System.out.println("isbn:"+isbn);
@@ -75,19 +73,18 @@ public class MyController {
 		booklist.add(new Book("author3",105,"title3",50.15));
 		booklist.add(new Book("author4",106,"title4",50.20));
 		 return dao.batchInsert(booklist);
-		// return repo.saveAll(booklist);
 	}
 
 	@GetMapping(value = "/batchupdate",
 			produces = MediaType.APPLICATION_JSON_VALUE,
 			headers = "Accept=application/json")
-	public int[] batchUpdate() {
+	public Iterable<Book> batchUpdate() {
 		booklist = new ArrayList<Book>();
 		booklist.add(new Book("author",103,"title",50.05));
 		booklist.add(new Book("author",104,"title",50.10));
 		booklist.add(new Book("author",105,"title",50.15));
 		booklist.add(new Book("author",106,"title",50.20));
-		return dao.batchUpdate(booklist);
+		return repo.saveAll(booklist);
 	}
 
 	@GetMapping(value = "/batchdelete",
