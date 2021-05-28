@@ -42,10 +42,6 @@ public abstract class MyBookDao {
         
     }
 
-	public int addBook(Book book) { 
-        return jdbcTemplate.update("INSERT INTO BOOK VALUES(?,?,?,?)",book.getAuthor(),book.getIsbn(),book.getTitle(),book.getPrice());
-	}
-	
 	public int updatebook(String author, String title, int isbn) { 
 		return jdbcTemplate.update("UPDATE BOOK SET  AUTHOR = ?, TITLE = ? WHERE ISBN =?",author,title,isbn);
 	}
@@ -63,15 +59,8 @@ public abstract class MyBookDao {
 
             @Override
             public int getBatchSize() {
-                return 5;
+                return 4;
             }
         });
     }
-
-	public int[] batchUpdate(final List<Book> books) {
-        final SqlParameterSource[] batch = SqlParameterSourceUtils.createBatch(books.toArray());
-
-        final int[] updateCounts = namedtemplate.batchUpdate("UPDATE BOOK SET AUTHOR = :author,TITLE = :title WHERE ISBN = :isbn AND PRICE = :price", batch);
-        return updateCounts;
-	}
 }
