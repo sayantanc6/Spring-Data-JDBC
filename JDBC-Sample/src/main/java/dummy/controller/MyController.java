@@ -45,14 +45,12 @@ public class MyController {
 	}	
 	
 	@PutMapping(value = "/updatebook",
-			produces = MediaType.APPLICATION_JSON_VALUE,
-			consumes = MediaType.APPLICATION_JSON_VALUE,
 			headers = "Accept=application/json")
-	public  int updatebook(@RequestParam("title")String title,@RequestParam("author")String author, @RequestParam("isbn") int isbn) {
+	public  void updatebook(@RequestParam("title")String title,@RequestParam("author")String author, @RequestParam("isbn") int isbn) {
 		System.out.println("title:"+title);
 		System.out.println("author:"+author);
-		System.out.println("isbn:"+isbn);
-		return dao.updatebook(author, title, isbn); 
+		System.out.println("isbn:"+isbn); 
+	    repo.updateBook(author, title, isbn); 
 	}
 	
 	@DeleteMapping(value = "/deletebook",
