@@ -63,6 +63,7 @@ SHOW WARNINGS;
 CREATE TABLE IF NOT EXISTS `book_author` (
 	BOOK INTEGER REFERENCES BOOK(ISBN),
 	AUTHOR INTEGER REFERENCES AUTHOR(authorid),
+	BOOK_KEY INTEGER ,
   PRIMARY KEY(BOOK, AUTHOR))
 ENGINE = InnoDB;
 
@@ -96,15 +97,14 @@ INSERT INTO `Author` (`authorID`,`fullname`,`email`) VALUES (71,"Bradley Bradfor
 INSERT INTO `Author` (`authorID`,`fullname`,`email`) VALUES (81,"Reese Serrano","ultricies.adipiscing@pede.co.uk"),(82,"Merrill Camacho","natoque.penatibus.et@lacusNulla.com"),(83,"Zeph Sears","ac.mi@pharetrafelis.co.uk"),(84,"Ciaran Lott","elit.dictum.eu@sollicitudinadipiscing.org"),(85,"Yoshio Fry","quis@semelit.edu"),(86,"Damian Barrett","Curae@pede.org"),(87,"Graham Spencer","lorem@asollicitudin.edu"),(88,"Patrick Schultz","cursus@cursus.co.uk"),(89,"Reuben Hahn","eu.tempor@afacilisis.co.uk"),(90,"Ivor Mcintosh","primis.in.@dictumplacerataugue.edu");
 INSERT INTO `Author` (`authorID`,`fullname`,`email`) VALUES (91,"Howard Barber","eros@aliquetmagnaa.ca"),(92,"Cullen Deleon","est.Nunc.ullamcorper@ligulaAliquam.edu"),(93,"Elvis King","orci.@risusMorbimetus.net"),(94,"Felix Johns","metus@elitpharetraut.org");
 
-INSERT INTO `book_author` (`book`,`author`) VALUES (80,1),(37,64),(64,65),(87,100),(20,17),(20,65),(48,27),(22,24),(28,98),(68,72);
-INSERT INTO `book_author` (`book`,`author`) VALUES (37,41),(72,76),(4,53),(84,78),(59,77),(89,31),(25,70),(78,46),(71,2),(72,19);
-INSERT INTO `book_author` (`book`,`author`) VALUES (74,83),(51,27),(55,27),(22,84),(48,40),(46,30),(95,79),(59,66),(67,83),(76,30);
-INSERT INTO `book_author` (`book`,`author`) VALUES (45,63),(41,6),(22,82),(85,75),(48,30),(98,98),(3,93),(17,2),(76,9),(91,60);
-INSERT INTO `book_author` (`book`,`author`) VALUES (15,34),(11,58),(75,83),(62,88),(79,52),(77,64),(38,81),(16,76),(97,27),(16,12);
-INSERT INTO `book_author` (`book`,`author`) VALUES (28,61),(76,98),(1,20),(25,25),(10,62),(6,60),(28,41),(44,55),(9,49),(76,31);
-INSERT INTO `book_author` (`book`,`author`) VALUES (87,28),(62,96),(6,11),(62,24),(77,14),(92,32),(83,36),(18,47),(82,11),(83,77);
-INSERT INTO `book_author` (`book`,`author`) VALUES (24,56),(99,80),(57,26),(1,85),(54,27),(67,82),(92,61),(70,10),(22,89),(91,16);
-INSERT INTO `book_author` (`book`,`author`) VALUES (45,96),(30,48),(2,70),(14,16),(58,82),(28,91),(91,77),(89,1),(25,24),(22,28);
-INSERT INTO `book_author` (`book`,`author`) VALUES (44,43),(39,42),(4,26),(94,76),(1,42),(17,59),(57,53),(47,4),(37,77),(23,68);
-
+INSERT INTO `book_author` (`author`,`book`,`book_key`) VALUES (77,45,1),(6,43,2),(66,43,3),(13,90,4),(5,57,5),(95,5,6),(92,33,7),(15,60,8),(52,47,9),(86,15,10);
+INSERT INTO `book_author` (`author`,`book`,`book_key`) VALUES (4,24,11),(53,37,12),(87,27,13),(20,59,14),(87,78,15),(98,32,16),(95,88,17),(94,35,18),(75,27,19),(44,43,20);
+INSERT INTO `book_author` (`author`,`book`,`book_key`) VALUES (9,76,21),(39,38,22),(21,95,23),(27,33,24),(64,17,25),(79,73,26),(51,75,27),(75,49,28),(61,13,29),(2,9,30);
+INSERT INTO `book_author` (`author`,`book`,`book_key`) VALUES (15,13,31),(76,24,32),(26,55,33),(83,29,34),(98,10,35),(27,89,36),(15,99,37),(31,67,38),(40,77,39),(49,44,40);
+INSERT INTO `book_author` (`author`,`book`,`book_key`) VALUES (23,88,41),(74,51,42),(3,30,43),(30,42,44),(24,20,45),(84,79,46),(45,39,47),(9,58,48),(22,56,49),(78,10,50);
+INSERT INTO `book_author` (`author`,`book`,`book_key`) VALUES (12,78,51),(37,79,52),(17,39,53),(16,3,54),(67,42,55),(86,5,56),(76,70,57),(88,26,58),(76,25,59),(38,84,60);
+INSERT INTO `book_author` (`author`,`book`,`book_key`) VALUES (67,96,61),(3,48,62),(72,2,63),(46,33,64),(22,75,65),(15,49,66),(89,9,67),(60,62,68),(47,36,69),(47,15,70);
+INSERT INTO `book_author` (`author`,`book`,`book_key`) VALUES (51,54,71),(80,89,72),(44,97,73),(60,59,74),(7,27,75),(82,80,76),(80,49,77),(94,33,78),(41,43,79),(55,58,80);
+INSERT INTO `book_author` (`author`,`book`,`book_key`) VALUES (63,69,81),(73,83,82),(76,38,83),(7,9,84),(40,36,85),(40,92,86),(78,41,87),(70,74,88),(74,66,89),(60,9,90);
+INSERT INTO `book_author` (`author`,`book`,`book_key`) VALUES (85,4,91),(69,80,92),(29,67,93),(58,38,94),(2,87,95),(22,70,96),(75,24,97),(13,71,98),(42,34,99),(1,85,100);
 
