@@ -17,7 +17,8 @@ public interface BookRepository extends PagingAndSortingRepository<Book, Integer
 	
 	@Query("select b.* from book b "
 		+ " join book_author ba on ba.book = b.isbn"
-		+ " where ba.author = :authorID")
+		+ " where ba.author = :authorID"
+		+ " ORDER BY ba.BOOK_KEY") 
 	List<Book> findByAuthorID(@Param("authorID") int author);
 
 	@Modifying
